@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>MQTT Publisher</title>
+  <script src="https://cdn.jsdelivr.net/npm/mqtt/dist/mqtt.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <div class="header">
+      <h1>MQTT Publisher</h1>
+      <p>Сторінка відправляє повідомлення в MQTT topic</p>
+    </div>
+
+    <section class="info">
+      <div class="info-box">
+        <span class="label">Topic</span>
+        <span class="value">web/chat</span>
+      </div>
+
+      <div class="info-box">
+        <span class="label">Статус</span>
+        <span id="status" class="value status">Підключення...</span>
+      </div>
+    </section>
+
+    <section class="form">
+      <input id="messageInput" type="text" placeholder="Введіть повідомлення">
+      <button onclick="sendMessage()">Відправити</button>
+    </section>
+
+    <h2 class="log-title">Лог відправки</h2>
+    <div id="log" class="log"></div>
+  </main>
+
+  <script>
+    const client = mqtt.connect('ws://172.20.10.3:9001', {
+      clientId: 'publisher_' + Math.random().toString(16).slice(2),
+      clean: true,
+      connectTimeout: 4000,
+      reconnectPeriod: 1000
+    });
+
+    const statusEl = document.getElementById('status');
+    const logEl = document.getElementById('log');
+
+    client.on('connect', function () {
+      statusEl.textContent = 'Підключено';
+    });
+
+    client.on('error', function () {
+      statusEl.textContent = 'Помилка';
+    });
+
+    client.on('offline', function () {
+      statusEl.textContent = 'Offline';
+    });
+
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const message = input.value.trim();
+
+      if (!message) {
+        alert('Введіть повідомлення');
+        return;
+      }
+
+      client.publish('web/chat', message);
+
+      const item = document.createElement('div');
+      item.className = 'message sent';
+      item.textContent = 'Відправлено: ' + message;
+      logEl.appendChild(item);
+
+      input.value = '';
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+  </script>
+</body>
+</html>

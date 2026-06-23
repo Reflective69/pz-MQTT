@@ -1,0 +1,30 @@
+mqtt-broker  | 1782201481: Received SUBSCRIBE from auto-9DD57ACC-FF4A-B7FA-0A98-F3773C5B08CF
+mqtt-broker  | 1782201481: 	sensors/+/temperature (QoS 0)
+mqtt-broker  | 1782201481: auto-9DD57ACC-FF4A-B7FA-0A98-F3773C5B08CF 0 sensors/+/temperature
+mqtt-broker  | 1782201481: Sending SUBACK to auto-9DD57ACC-FF4A-B7FA-0A98-F3773C5B08CF
+mqtt-broker  | 1782201482: New connection from 172.18.0.1:51144 on port 1883.
+mqtt-broker  | 1782201482: New client connected from 172.18.0.1:51144 as auto-08FE1D70-09E8-4601-5514-B24D7AEC8514 (p4, c1, k60).
+mqtt-broker  | 1782201482: No will message specified.
+mqtt-broker  | 1782201482: Sending CONNACK to auto-08FE1D70-09E8-4601-5514-B24D7AEC8514 (0, 0)
+mqtt-broker  | 1782201482: Received PUBLISH from auto-08FE1D70-09E8-4601-5514-B24D7AEC8514 (d0, q0, r0, m0, 'sensors/room1/temperature', ... (4 bytes))
+mqtt-broker  | 1782201482: Sending PUBLISH to auto-9DD57ACC-FF4A-B7FA-0A98-F3773C5B08CF (d0, q0, r0, m0, 'sensors/room1/temperature', ... (4 bytes))
+mqtt-broker  | 1782201482: Received DISCONNECT from auto-08FE1D70-09E8-4601-5514-B24D7AEC8514
+mqtt-broker  | 1782201482: Client auto-08FE1D70-09E8-4601-5514-B24D7AEC8514 [172.18.0.1:51144] disconnected.
+mqtt-broker  | 1782201482: New connection from 172.18.0.1:51158 on port 1883.
+mqtt-broker  | 1782201482: New client connected from 172.18.0.1:51158 as auto-B2EDD98F-3ECB-E1EF-9878-08F2F27C4395 (p4, c1, k60).
+mqtt-broker  | 1782201482: No will message specified.
+mqtt-broker  | 1782201482: Sending CONNACK to auto-B2EDD98F-3ECB-E1EF-9878-08F2F27C4395 (0, 0)
+mqtt-broker  | 1782201482: Received PUBLISH from auto-B2EDD98F-3ECB-E1EF-9878-08F2F27C4395 (d0, q0, r0, m0, 'sensors/room2/temperature', ... (4 bytes))
+mqtt-broker  | 1782201482: Sending PUBLISH to auto-9DD57ACC-FF4A-B7FA-0A98-F3773C5B08CF (d0, q0, r0, m0, 'sensors/room2/temperature', ... (4 bytes))
+mqtt-broker  | 1782201482: Received DISCONNECT from auto-B2EDD98F-3ECB-E1EF-9878-08F2F27C4395
+mqtt-broker  | 1782201482: Client auto-B2EDD98F-3ECB-E1EF-9878-08F2F27C4395 [172.18.0.1:51158] disconnected.
+mqtt-broker  | 1782201483: New connection from 172.18.0.1:51160 on port 1883.
+mqtt-broker  | 1782201483: New client connected from 172.18.0.1:51160 as auto-8895D995-304F-76A3-26ED-C8162A6D5DF8 (p4, c1, k60).
+mqtt-broker  | 1782201483: No will message specified.
+mqtt-broker  | 1782201483: Sending CONNACK to auto-8895D995-304F-76A3-26ED-C8162A6D5DF8 (0, 0)
+mqtt-broker  | 1782201483: Received PUBLISH from auto-8895D995-304F-76A3-26ED-C8162A6D5DF8 (d0, q0, r0, m0, 'sensors/room3/temperature', ... (4 bytes))
+mqtt-broker  | 1782201483: Sending PUBLISH to auto-9DD57ACC-FF4A-B7FA-0A98-F3773C5B08CF (d0, q0, r0, m0, 'sensors/room3/temperature', ... (4 bytes))
+mqtt-broker  | 1782201483: Received DISCONNECT from auto-8895D995-304F-76A3-26ED-C8162A6D5DF8
+mqtt-broker  | 1782201483: Client auto-8895D995-304F-76A3-26ED-C8162A6D5DF8 [172.18.0.1:51160] disconnected.
+mqtt-broker  | 1782201489: Received DISCONNECT from auto-9DD57ACC-FF4A-B7FA-0A98-F3773C5B08CF
+mqtt-broker  | 1782201489: Client auto-9DD57ACC-FF4A-B7FA-0A98-F3773C5B08CF [172.18.0.1:51140] disconnected.

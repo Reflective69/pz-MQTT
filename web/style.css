@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.header h1 {
+  margin: 0 0 10px;
+  font-size: 38px;
+  color: #38bdf8;
+}
+
+.header p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 16px;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.info-box {
+  background: #1f2937;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.status {
+  color: #22c55e;
+}
+
+.form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+input {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #475569;
+  outline: none;
+  font-size: 16px;
+}
+
+input:focus {
+  border-color: #38bdf8;
+}
+
+button {
+  padding: 14px 22px;
+  border: none;
+  border-radius: 12px;
+  background: #22c55e;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+.log-title {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.log {
+  width: 100%;
+  min-height: 220px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: #020617;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px;
+  color: #e2e8f0;
+  font-family: Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.message {
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  background: #0f172a;
+  border-left: 4px solid #38bdf8;
+  border-radius: 8px;
+}
+
+.sent {
+  border-left-color: #22c55e;
+}
+
+@media (max-width: 600px) {
+  .info {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}

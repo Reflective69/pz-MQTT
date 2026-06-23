@@ -1,0 +1,51 @@
+MQTT Publish/Subscribe tests
+
+1. Basic Publish/Subscribe
+
+Command:
+timeout 5 mosquitto_sub -h localhost -t "hello/world" -v &
+sleep 1
+mosquitto_pub -h localhost -t "hello/world" -m "Hello MQTT!"
+
+Result:
+hello/world Hello MQTT!
+
+
+2. QoS test
+
+Commands:
+timeout 8 mosquitto_sub -h localhost -t "test/qos" -v &
+sleep 1
+mosquitto_pub -h localhost -t "test/qos" -m "Message QoS 0" -q 0
+mosquitto_pub -h localhost -t "test/qos" -m "Message QoS 1" -q 1
+mosquitto_pub -h localhost -t "test/qos" -m "Message QoS 2" -q 2
+
+Result:
+test/qos Message QoS 0
+test/qos Message QoS 1
+test/qos Message QoS 2
+
+
+3. Retain test
+
+Commands:
+mosquitto_pub -h localhost -t "device/status" -m "ONLINE" -r
+mosquitto_sub -h localhost -t "device/status" -v -C 1
+
+Result:
+device/status ONLINE
+
+
+4. Wildcard topic test
+
+Commands:
+timeout 8 mosquitto_sub -h localhost -t "sensors/+/temperature" -v &
+sleep 1
+mosquitto_pub -h localhost -t "sensors/room1/temperature" -m "22.5"
+mosquitto_pub -h localhost -t "sensors/room2/temperature" -m "21.3"
+mosquitto_pub -h localhost -t "sensors/room3/temperature" -m "23.7"
+
+Result:
+sensors/room1/temperature 22.5
+sensors/room2/temperature 21.3
+sensors/room3/temperature 23.7

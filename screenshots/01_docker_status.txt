@@ -1,0 +1,2 @@
+NAME          IMAGE                      COMMAND                  SERVICE     CREATED         STATUS         PORTS
+mqtt-broker   eclipse-mosquitto:latest   "/docker-entrypoint.…"   mosquitto   7 minutes ago   Up 7 minutes   0.0.0.0:1883->1883/tcp, [::]:1883->1883/tcp, 0.0.0.0:9001->9001/tcp, [::]:9001->9001/tcp

@@ -1,0 +1,6 @@
+broker/data/
+broker/logs/
+*.log
+.env
+.vscode/
+.idea/

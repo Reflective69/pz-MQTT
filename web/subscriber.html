@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>MQTT Subscriber</title>
+  <script src="https://cdn.jsdelivr.net/npm/mqtt/dist/mqtt.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <div class="header">
+      <h1>MQTT Subscriber</h1>
+      <p>Сторінка приймає повідомлення з MQTT topic</p>
+    </div>
+
+    <section class="info">
+      <div class="info-box">
+        <span class="label">Topic</span>
+        <span class="value">web/chat</span>
+      </div>
+
+      <div class="info-box">
+        <span class="label">Статус</span>
+        <span id="status" class="value status">Підключення...</span>
+      </div>
+    </section>
+
+    <h2 class="log-title">Отримані повідомлення</h2>
+    <div id="messages" class="log"></div>
+  </main>
+
+  <script>
+    const client = mqtt.connect('ws://172.20.10.3:9001', {
+      clientId: 'subscriber_' + Math.random().toString(16).slice(2),
+      clean: true,
+      connectTimeout: 4000,
+      reconnectPeriod: 1000
+    });
+
+    const statusEl = document.getElementById('status');
+    const messagesEl = document.getElementById('messages');
+
+    client.on('connect', function () {
+      statusEl.textContent = 'Підключено';
+
+      client.subscribe('web/chat', function (err) {
+        const item = document.createElement('div');
+        item.className = 'message';
+        item.textContent = err
+          ? 'Помилка підписки на web/chat'
+          : 'Підписка на web/chat успішна';
+        messagesEl.appendChild(item);
+      });
+    });
+
+    client.on('message', function (topic, message) {
+      const item = document.createElement('div');
+      item.className = 'message';
+      item.textContent = topic + ': ' + message.toString();
+      messagesEl.appendChild(item);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    });
+
+    client.on('error', function () {
+      statusEl.textContent = 'Помилка';
+    });
+
+    client.on('offline', function () {
+      statusEl.textContent = 'Offline';
+    });
+  </script>
+</body>
+</html>
