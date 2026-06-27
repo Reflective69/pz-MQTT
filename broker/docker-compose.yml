@@ -4,9 +4,35 @@ services:
     container_name: mqtt-broker
     ports:
       - "1883:1883"
-      - "9001:9001"
+      - "8086:9001"
     volumes:
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
       - ./data:/mosquitto/data
       - ./logs:/mosquitto/log
+    restart: unless-stopped
+
+  subscriber:
+    image: nginx:alpine
+    container_name: mqtt-subscriber-page
+    ports:
+      - "8084:80"
+    volumes:
+      - ../web/subscriber.html:/usr/share/nginx/html/index.html
+      - ../web/subscriber.html:/usr/share/nginx/html/subscriber.html
+      - ../web/style.css:/usr/share/nginx/html/style.css
+    depends_on:
+      - mosquitto
+    restart: unless-stopped
+
+  publisher:
+    image: nginx:alpine
+    container_name: mqtt-publisher-page
+    ports:
+      - "8085:80"
+    volumes:
+      - ../web/publisher.html:/usr/share/nginx/html/index.html
+      - ../web/publisher.html:/usr/share/nginx/html/publisher.html
+      - ../web/style.css:/usr/share/nginx/html/style.css
+    depends_on:
+      - mosquitto
     restart: unless-stopped
